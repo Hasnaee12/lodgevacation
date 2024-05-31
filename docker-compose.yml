@@ -14,6 +14,7 @@ services:
       MYSQL_PASSWORD: mypassword
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql  # Ajout du volume pour les données
     ports:
       - "3306:3306"
 
@@ -33,3 +34,6 @@ services:
       - "5000:5000"
     depends_on:
       - db
+
+volumes:
+  mysql_data:  # Déclaration du volume
